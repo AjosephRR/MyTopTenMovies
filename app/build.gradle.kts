@@ -1,7 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("org.jetbrains.kotlin.kapt")
+    //id("org.jetbrains.kotlin.kapt")
+    alias(libs.plugins.hilt)
+    kotlin("kapt")
 
 }
 
@@ -56,7 +58,7 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     implementation("com.github.bumptech.glide:glide:4.16.0")
     kapt("com.github.bumptech.glide:compiler:4.16.0")
-
-
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
 
 }

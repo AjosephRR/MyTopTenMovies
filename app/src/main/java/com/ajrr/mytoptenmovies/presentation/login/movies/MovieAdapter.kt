@@ -33,13 +33,10 @@ class MovieAdapter : ListAdapter<Movie, MovieAdapter.MovieViewHolder>(MovieDiffC
             // Aquí falta solo agregar el listener para ir a la pantalla de detalle
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, MovieDetailActivity::class.java)
-                intent.putExtra("title", movie.title)
-                intent.putExtra("poster_path", movie.poster_path)
-                intent.putExtra("rating", movie.vote_average)
-                intent.putExtra("overview", movie.overview)
-                intent.putExtra("release_date", movie.release_date)
+                intent.putExtra("movie_id", movie.id) // 👈 CLAVE PARA LA CONSULTA
                 itemView.context.startActivity(intent)
             }
+
         }
 
 

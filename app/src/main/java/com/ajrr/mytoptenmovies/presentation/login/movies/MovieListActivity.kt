@@ -1,27 +1,26 @@
 package com.ajrr.mytoptenmovies.presentation.login.movies
 
-
-
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.MenuItem
 import android.view.Menu
-import androidx.appcompat.widget.Toolbar
+import android.view.MenuItem
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ajrr.mytoptenmovies.R
 import com.ajrr.mytoptenmovies.data.datastore.UserPreferences
-import com.ajrr.mytoptenmovies.data.datastore.repository.MovieRepository
 import com.ajrr.mytoptenmovies.presentation.login.LoginActivity
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MovieListActivity : AppCompatActivity() {
 
-    private lateinit var movieViewModel: MovieViewModel
+    // ✅ ViewModel inyectado con Hilt
+    private val movieViewModel: MovieViewModel by viewModels()
     private lateinit var movieAdapter: MovieAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,11 +35,7 @@ class MovieListActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = movieAdapter
 
-        val repository = MovieRepository("9500bde5dd530fa44ec42b22bb1b08fa")
-        val factory = MovieViewModelFactory(repository)
-        movieViewModel = ViewModelProvider(this, factory)[MovieViewModel::class.java]
-
-
+        // ✅ Observa los datos del ViewModel ya inyectado
         lifecycleScope.launch {
             movieViewModel.movies.collect { movies ->
                 movieAdapter.submitList(movies)
@@ -48,27 +43,12 @@ class MovieListActivity : AppCompatActivity() {
         }
 
         movieViewModel.loadTopRatedMovies()
-
-
-        /*
-        val btnLogout = findViewById<Button>(R.id.btnLogout)
-        btnLogout.setOnClickListener {
-            // ⚠️ Limpiar el login guardado si estás usando DataStore
-            lifecycleScope.launch {
-                val preferences = UserPreferences(this@MovieListActivity)
-                preferences.clearSession()  // <- asegúrate que esto exista
-                startActivity(Intent(this@MovieListActivity, LoginActivity::class.java))
-                finish() // Cierra esta pantalla para que no se pueda volver atrás
-            }
-        }
-
-         */
     }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_movie_list, menu)
         return true
     }
-
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
