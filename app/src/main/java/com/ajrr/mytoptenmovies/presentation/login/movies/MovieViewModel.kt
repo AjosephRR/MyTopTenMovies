@@ -8,20 +8,18 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class MoviesViewModel(
-    private val repository: MovieRepository
-) : ViewModel() {
+class MovieViewModel(private val repository: MovieRepository) : ViewModel() {
 
     private val _movies = MutableStateFlow<List<Movie>>(emptyList())
     val movies: StateFlow<List<Movie>> = _movies
 
-    fun fetchTopRatedMovies() {
+    fun loadTopRatedMovies() {
         viewModelScope.launch {
             try {
-                val topMovies = repository.getTopRatedMovies()
-                _movies.value = topMovies.take(10)
+                val result = repository.getTopRatedMovies()
+                _movies.value = result
             } catch (e: Exception) {
-                // Aquí puedes manejar errores (log, mostrar error, etc.)
+                // Manejo de error simple
                 e.printStackTrace()
             }
         }
