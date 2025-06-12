@@ -11,7 +11,9 @@ activity = "1.10.1"
 constraintlayout = "2.2.1"
 datastore-preferences = "1.0.0"
 lifecycle-viewmodel-ktx = "2.8.1"
-
+retrofit = "2.9.0"
+gson = "2.10.1"
+logging-interceptor = "4.12.0"
 
 
 
@@ -26,7 +28,9 @@ androidx-activity = { group = "androidx.activity", name = "activity", version.re
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 androidx-datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore-preferences" }
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle-viewmodel-ktx" }
-
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "logging-interceptor" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
