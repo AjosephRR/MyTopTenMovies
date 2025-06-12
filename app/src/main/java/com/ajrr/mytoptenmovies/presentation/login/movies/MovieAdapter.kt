@@ -1,6 +1,7 @@
 package com.ajrr.mytoptenmovies.presentation.login.movies
 
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,9 +27,21 @@ class MovieAdapter : ListAdapter<Movie, MovieAdapter.MovieViewHolder>(MovieDiffC
 
             Glide.with(posterImage.context)
                 .load("https://image.tmdb.org/t/p/w500${movie.poster_path}")
-                .placeholder(R.drawable.ic_launcher_background) // debes tener un drawable de placeholder
+                .placeholder(R.drawable.ic_launcher_background) // Puedes personalizar el drawable si quieres
                 .into(posterImage)
+
+            // Aquí falta solo agregar el listener para ir a la pantalla de detalle
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, MovieDetailActivity::class.java)
+                intent.putExtra("title", movie.title)
+                intent.putExtra("poster_path", movie.poster_path)
+                intent.putExtra("rating", movie.vote_average)
+                intent.putExtra("overview", movie.overview)
+                intent.putExtra("release_date", movie.release_date)
+                itemView.context.startActivity(intent)
+            }
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
