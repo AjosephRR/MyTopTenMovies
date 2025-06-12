@@ -43,5 +43,16 @@
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:layout_marginTop="12dp" />
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Regresar"
+            android:layout_margin="16dp"
+            android:layout_gravity="start"
+            android:backgroundTint="?attr/colorPrimary"
+            android:textColor="@android:color/white"/>
+
     </LinearLayout>
 </ScrollView>

@@ -24,4 +24,11 @@ class UserPreferences(context: Context) {
             prefs[IS_LOGGED_IN] = loggedIn
         }
     }
+
+    suspend fun clearSession() {
+        appContext.dataStore.edit { preferences ->
+            preferences.clear()
+        }
+    }
+
 }

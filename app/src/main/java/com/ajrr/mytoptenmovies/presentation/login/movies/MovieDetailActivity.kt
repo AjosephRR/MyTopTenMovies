@@ -1,6 +1,7 @@
 package com.ajrr.mytoptenmovies.presentation.login.movies
 
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +24,10 @@ class MovieDetailActivity : AppCompatActivity() {
         val ratingText = findViewById<TextView>(R.id.ratingTextView)
         val overviewText = findViewById<TextView>(R.id.overviewTextView)
         val releaseDateText = findViewById<TextView>(R.id.releaseDateTextView)
+        val btnBack = findViewById<Button>(R.id.btnBack)
+        btnBack.setOnClickListener {
+            finish()  // Cierra esta pantalla y vuelve a la anterior
+        }
 
         titleText.text = title
         ratingText.text = "⭐ $rating"

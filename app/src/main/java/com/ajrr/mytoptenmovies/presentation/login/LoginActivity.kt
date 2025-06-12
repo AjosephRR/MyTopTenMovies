@@ -1,4 +1,4 @@
-package com.ajrr.mytoptenmovies
+package com.ajrr.mytoptenmovies.presentation.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,9 +9,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.ajrr.mytoptenmovies.R
 import com.ajrr.mytoptenmovies.data.datastore.UserPreferences
-import com.ajrr.mytoptenmovies.presentation.login.LoginViewModel
-import com.ajrr.mytoptenmovies.presentation.login.movies.MovieDetailActivity
 import com.ajrr.mytoptenmovies.presentation.login.movies.MovieListActivity
 import kotlinx.coroutines.launch
 

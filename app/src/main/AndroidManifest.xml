@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".MyTopTenMoviesApp"
+        android:name=".presentation.login.movies.MyTopTenMoviesApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -20,7 +20,7 @@
         <activity android:name=".presentation.login.movies.MovieListActivity" />
 
         <activity
-            android:name=".LoginActivity"
+            android:name=".presentation.login.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

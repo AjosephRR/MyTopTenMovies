@@ -1,4 +1,4 @@
-package com.ajrr.mytoptenmovies
+package com.ajrr.mytoptenmovies.presentation.login.movies
 
 import android.app.Application
 
