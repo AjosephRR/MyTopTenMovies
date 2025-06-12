@@ -11,6 +11,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.ajrr.mytoptenmovies.data.datastore.UserPreferences
 import com.ajrr.mytoptenmovies.presentation.login.LoginViewModel
+import com.ajrr.mytoptenmovies.presentation.login.movies.MovieDetailActivity
+import com.ajrr.mytoptenmovies.presentation.login.movies.MovieListActivity
 import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
@@ -39,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.isLoggedIn.collect { loggedIn ->
                     if (loggedIn) {
-                        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                        startActivity(Intent(this@LoginActivity, MovieListActivity::class.java))
                         finish()
                     }
                 }

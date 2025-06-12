@@ -30,7 +30,7 @@ class MovieListActivity : AppCompatActivity() {
         val repository = MovieRepository("eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NTAwYmRlNWRkNTM" +
                 "wZmE0NGVjNDJiMjJiYjFiMDhmYSIsIm5iZiI6MTc0OTY5NjMyMC4xOTcsInN1YiI6IjY4NGEzZjQwNTYwMT" +
                 "FmNWFjYzVjNmQ1YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.juBoSpOht0NL5X3Ry6" +
-                "jDPRdx002aG2fP1qvcJoaDbwA") // Sustituye aquí tu API Key
+                "jDPRdx002aG2fP1qvcJoaDbwA")
         val factory = MovieViewModelFactory(repository)
         movieViewModel = ViewModelProvider(this, factory)[MovieViewModel::class.java]
 

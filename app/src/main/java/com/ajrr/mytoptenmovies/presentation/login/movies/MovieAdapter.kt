@@ -42,6 +42,9 @@ class MovieAdapter : ListAdapter<Movie, MovieAdapter.MovieViewHolder>(MovieDiffC
             }
         }
 
+
+
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
@@ -53,5 +56,7 @@ class MovieAdapter : ListAdapter<Movie, MovieAdapter.MovieViewHolder>(MovieDiffC
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
+
+
 }
 
