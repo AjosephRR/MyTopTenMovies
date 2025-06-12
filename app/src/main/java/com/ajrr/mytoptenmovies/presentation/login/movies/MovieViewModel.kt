@@ -15,7 +15,7 @@ class MovieViewModel(private val repository: MovieRepository) : ViewModel() {
 
     fun loadTopRatedMovies() {
         viewModelScope.launch {
-            _movies.value = repository.getTopRatedMovies()
+            _movies.value = repository.getTopRatedMovies().take(10)
         }
     }
 }

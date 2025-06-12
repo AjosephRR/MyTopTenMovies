@@ -5,7 +5,9 @@ package com.ajrr.mytoptenmovies.presentation.login.movies
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
+import android.view.MenuItem
+import android.view.Menu
+import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -26,6 +28,9 @@ class MovieListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_list)
 
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewMovies)
         movieAdapter = MovieAdapter()
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -44,6 +49,8 @@ class MovieListActivity : AppCompatActivity() {
 
         movieViewModel.loadTopRatedMovies()
 
+
+        /*
         val btnLogout = findViewById<Button>(R.id.btnLogout)
         btnLogout.setOnClickListener {
             // ⚠️ Limpiar el login guardado si estás usando DataStore
@@ -53,6 +60,28 @@ class MovieListActivity : AppCompatActivity() {
                 startActivity(Intent(this@MovieListActivity, LoginActivity::class.java))
                 finish() // Cierra esta pantalla para que no se pueda volver atrás
             }
+        }
+
+         */
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_movie_list, menu)
+        return true
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_logout -> {
+                lifecycleScope.launch {
+                    val preferences = UserPreferences(this@MovieListActivity)
+                    preferences.clearSession()
+                    startActivity(Intent(this@MovieListActivity, LoginActivity::class.java))
+                    finish()
+                }
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }
