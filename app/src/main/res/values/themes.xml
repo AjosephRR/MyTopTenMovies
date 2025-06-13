@@ -1,11 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Theme.MyTopTenMovies" parent="Base.Theme.MyTopTenMovies" >
+
+    <style name="Base.Theme.MyTopTenMovies" parent="Theme.Material3.DayNight.NoActionBar" />
+
+    <style name="Theme.MyTopTenMovies" parent="Base.Theme.MyTopTenMovies">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryVariant">@color/primary_variant</item>
         <item name="colorOnPrimary">@color/on_primary</item>
     </style>
-
-
 
 </resources>
