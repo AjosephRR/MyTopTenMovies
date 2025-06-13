@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class MovieListActivity : AppCompatActivity() {
 
-    // ✅ ViewModel inyectado con Hilt
+    // Extras //
     private val movieViewModel: MovieViewModel by viewModels()
     private lateinit var movieAdapter: MovieAdapter
 

@@ -1,6 +1,7 @@
 package com.ajrr.mytoptenmovies.presentation.login.movies
 
 
+import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -30,12 +31,20 @@ class MovieAdapter : ListAdapter<Movie, MovieAdapter.MovieViewHolder>(MovieDiffC
                 .placeholder(R.drawable.ic_launcher_background) // Puedes personalizar el drawable si quieres
                 .into(posterImage)
 
-            // Aquí falta solo agregar el listener para ir a la pantalla de detalle
+
             itemView.setOnClickListener {
-                val intent = Intent(itemView.context, MovieDetailActivity::class.java)
-                intent.putExtra("movie_id", movie.id) // 👈 CLAVE PARA LA CONSULTA
-                itemView.context.startActivity(intent)
+                val context = itemView.context
+                val intent = Intent(context, MovieDetailActivity::class.java)
+                intent.putExtra("movie_id", movie.id)
+
+                context.startActivity(intent)
+
+                // Aplica animación si el contexto es una Activity
+                if (context is Activity) {
+                    context.overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
+                }
             }
+
 
         }
 
