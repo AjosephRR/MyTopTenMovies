@@ -24,7 +24,7 @@ class SplashActivity : AppCompatActivity() {
         userPreferences = UserPreferences(applicationContext)
 
         lifecycleScope.launch {
-            delay(2500) // tiempo para el splash
+            delay(3500) // tiempo para el splash
 
             val isLoggedIn = userPreferences.isLoggedIn.first()
 
